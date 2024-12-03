@@ -1,6 +1,6 @@
 What is WCAG-Checker?
 
-WCAG-Checker is a tool for analyzing and evaluating the accessibility of websites based on the WCAG (Web Content Accessibility Guidelines). It helps developers and designers ensure that their websites are accessible to everyone, including people with disabilities.
+WCAG-Checker is a tool for analyzing and evaluating the accessibility of websites based on the [WCAG (Web Content Accessibility Guidelines)](https://www.w3.org/WAI/standards-guidelines/wcag/). It helps developers and designers ensure that their websites are accessible to everyone, including people with disabilities.
 
 How does it work?
 
@@ -19,4 +19,5 @@ How does it work?
 - Inapplicable: Rules that do not apply to the current page.
 
 Demo
-🚀 
+🚀  [Try it!](https://wcag-checker.vercel.app/)
+ 
