@@ -2,7 +2,7 @@ import { Button, Spinner } from "@chakra-ui/react";
 
 type SubmitButtonProps = {
   onClick: () => void;
-  isLoading: boolean; // Ny prop för att hantera loading-status
+  isLoading: boolean;
 };
 
 const SubmitButton = ({ onClick, isLoading }: SubmitButtonProps) => {
@@ -17,7 +17,7 @@ const SubmitButton = ({ onClick, isLoading }: SubmitButtonProps) => {
         bg: "#38A18ES",
       }}
       onClick={onClick}
-      isDisabled={isLoading} // Inaktivera knappen vid laddning
+      isDisabled={isLoading}
     >
       {isLoading ? (
         <>

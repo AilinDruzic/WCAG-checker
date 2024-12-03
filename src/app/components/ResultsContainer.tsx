@@ -5,7 +5,7 @@ import { CheckCircleIcon, WarningIcon, InfoIcon } from "@chakra-ui/icons";
 type ResultsContainerProps = {
   results: any;
   isLoading: boolean;
-  errorMessage: string | null; // Ny prop för att hantera felmeddelanden
+  errorMessage: string | null; 
 };
 
 const ResultsContainer = ({ results, isLoading, errorMessage }: ResultsContainerProps) => {
@@ -48,7 +48,6 @@ const ResultsContainer = ({ results, isLoading, errorMessage }: ResultsContainer
 
       <Divider mb="4" />
 
-      {/* Violations */}
       {results.violations?.length > 0 ? (
         <Box mb="6">
           <Heading as="h3" size="md" mb="4" color="red.600">
@@ -83,7 +82,6 @@ const ResultsContainer = ({ results, isLoading, errorMessage }: ResultsContainer
 
       <Divider mb="4" />
 
-      {/* Passes */}
       {results.passes?.length > 0 && (
         <Box mb="6">
           <Heading as="h3" size="md" mb="4" color="green.600">
@@ -102,7 +100,6 @@ const ResultsContainer = ({ results, isLoading, errorMessage }: ResultsContainer
 
       <Divider mb="4" />
 
-      {/* Inapplicable */}
       {results.inapplicable?.length > 0 && (
         <Box>
           <Heading as="h3" size="md" mb="4" color="gray.600">

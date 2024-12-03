@@ -6,10 +6,9 @@ import UrlInput from "./components/UrlInput";
 import SubmitButton from "./components/SubmitButton";
 import ResultsContainer from "./components/ResultsContainer";
 
-// Funktion för att validera en URL
 const isValidUrl = (url: string): boolean => {
   try {
-    new URL(url); // Validerar URL-format
+    new URL(url); 
     return true;
   } catch {
     return false;
@@ -17,26 +16,22 @@ const isValidUrl = (url: string): boolean => {
 };
 
 export default function Home() {
-  const [url, setUrl] = useState(""); // För användarens inmatning
-  const [results, setResults] = useState<any>(null); // För analysresultaten
-  const [isLoading, setIsLoading] = useState(false); // För laddningsindikator
-  const [errorMessage, setErrorMessage] = useState<string | null>(null); // För felmeddelanden
+  const [url, setUrl] = useState(""); 
+  const [results, setResults] = useState<any>(null); 
+  const [isLoading, setIsLoading] = useState(false); 
+  const [errorMessage, setErrorMessage] = useState<string | null>(null); 
 
-  // Funktion för att köra analys
   const handleAnalyze = async () => {
-    // Kontrollera om användaren har angett en URL
     if (!url.trim()) {
       setErrorMessage("You need to paste a URL!");
       return;
     }
 
-    // Kontrollera om URL:en är giltig
     if (!isValidUrl(url)) {
       setErrorMessage("Please enter a valid URL!");
       return;
     }
 
-    // Återställ tidigare fel och börja ladda
     setErrorMessage(null);
     setIsLoading(true);
     setResults(null);
@@ -57,7 +52,7 @@ export default function Home() {
       }
 
       const data = await response.json();
-      setResults(data); // Uppdatera resultaten
+      setResults(data);
     } catch (error) {
       setErrorMessage("An unexpected error occurred. Please try again.");
     } finally {
@@ -67,7 +62,6 @@ export default function Home() {
 
   return (
     <Container maxW="lg" centerContent>
-      {/* Rubrik och instruktioner */}
       <Heading as="h1" size="xl" mt="20" mb="4" textAlign="center">
         Is Your Website Accessible To Everyone?
       </Heading>
@@ -75,15 +69,11 @@ export default function Home() {
         Enter your URL and receive a detailed report on your site's accessibility based on WCAG standards.
       </Text>
 
-      {/* Huvudinnehåll */}
       <Box width="100%">
-        {/* URL-input för användaren */}
         <UrlInput value={url} onChange={(e) => setUrl(e.target.value)} />
 
-        {/* Knappen som kör analysen */}
         <SubmitButton onClick={handleAnalyze} isLoading={isLoading} />
 
-        {/* Resultatcontainer med fel och resultat */}
         <ResultsContainer results={results} isLoading={isLoading} errorMessage={errorMessage} />
       </Box>
     </Container>

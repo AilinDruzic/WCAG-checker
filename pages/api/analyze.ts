@@ -17,12 +17,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   if (req.method === "POST") {
     const { url } = req.body;
 
-    // Kontrollera om URL tillhandahålls
     if (!url) {
       return res.status(400).json({ error: "URL is required" });
     }
 
-    // Kontrollera om det är en giltig URL
+    
     if (!isValidUrl(url)) {
       return res.status(400).json({ error: "Invalid URL format" });
     }
@@ -30,36 +29,35 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     try {
       console.log("Fetching HTML for URL:", url);
 
-      // Hämta HTML från URL:en
+    
       const { data: html } = await axios.get(url, {
-        timeout: 10000, // Timeout på 10 sekunder
-        headers: { "User-Agent": "WCAG-Checker/1.0" }, // Ange en user-agent för att undvika blockering
+        timeout: 10000, 
+        headers: { "User-Agent": "WCAG-Checker/1.0" }, 
       });
 
       console.log("HTML fetched successfully, length:", html.length);
 
-      // Skapa en JSDOM-instans
       const dom = new JSDOM(html);
 
-      // Sätt upp globala variabler för axe.run
+
       global.window = dom.window as any;
       global.document = dom.window.document as any;
 
-      // Kör axe-analysen på document.documentElement (root-elementet)
+
       const results = await axe.run(global.document.documentElement);
 
-      // Rensa globala variabler
+
       global.window = undefined as any;
       global.document = undefined as any;
 
       console.log("Accessibility analysis completed:", results);
 
-      // Returnera analysresultaten
+     
       res.status(200).json(results);
     } catch (error) {
       console.error("Error occurred during analysis:", error);
 
-      // Kontrollera om felet är kopplat till att sidan inte kan nås
+
       if (axios.isAxiosError(error) && error.response) {
         return res.status(error.response.status).json({
           error: `Failed to fetch the URL (status: ${error.response.status})`,
@@ -71,7 +69,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         });
       }
 
-      // Annars returnera ett generellt fel
       res.status(500).json({
         error: "An unexpected error occurred during analysis",
         details: (error as Error).message,
