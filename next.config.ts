@@ -1,7 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  outputFileTracingIncludes: {
+    "/api/analyze": ["./node_modules/axe-core/axe.min.js"],
+  },
 };
 
 export default nextConfig;
