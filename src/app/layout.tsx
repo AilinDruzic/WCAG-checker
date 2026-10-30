@@ -18,16 +18,12 @@ const geistMono = localFont({
   weight: "100 900",
 });
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <ChakraProvider theme={theme}>
-        <Box bg="#4166F5" minH="100vh" color="white">
+          <Box bg="#F8FAFC" minH="100vh" color="#1E293B">
             {children}
           </Box>
         </ChakraProvider>

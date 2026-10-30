@@ -8,23 +8,34 @@ type SubmitButtonProps = {
 const SubmitButton = ({ onClick, isLoading }: SubmitButtonProps) => {
   return (
     <Button
-      bg="#43B5A0"
-      color="white"
-      _hover={{
-        bg: "#5CD6BA",
-      }}
-      _active={{
-        bg: "#38A18ES",
-      }}
+      width="100%"
+      mt={3}
+      height="48px"
+      bg="#302A54"
+      color="#FFFFFF"
+      fontSize="md"
+      fontWeight="medium"
+      borderRadius="8px"
       onClick={onClick}
       isDisabled={isLoading}
+      _hover={{
+        bg: "#453B72",
+      }}
+      _active={{
+        bg: "#241F40",
+      }}
+      _focusVisible={{
+        outline: "3px solid #8B72D6",
+        outlineOffset: "3px",
+      }}
     >
       {isLoading ? (
         <>
-          <Spinner size="sm" mr="2" /> Running...
+          <Spinner size="sm" mr={2} />
+          Checking accessibility...
         </>
       ) : (
-        "Run Analysis"
+        "Check accessibility"
       )}
     </Button>
   );

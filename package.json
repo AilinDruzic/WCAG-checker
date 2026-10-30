@@ -5,14 +5,15 @@
     "@emotion/react": "^11.13.3",
     "@emotion/styled": "^11.13.0",
     "axe-core": "^4.10.2",
-    "axios": "^1.7.8",
+    "axios": "^1.21.0",
     "chart.js": "^4.4.6",
     "framer-motion": "^11.11.10",
     "jsdom": "^25.0.1",
-    "next": "^15.0.1",
+    "next": "^15.5.28",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-icons": "^5.3.0"
+    "react-icons": "^5.3.0",
+    "ssrf-req-filter": "^1.1.1"
   },
   "scripts": {
     "dev": "next dev",
@@ -23,6 +24,11 @@
     "@types/jsdom": "^21.1.7",
     "@types/node": "22.8.1",
     "@types/react": "18.3.12",
+    "eslint": "^8.57.1",
+    "eslint-config-next": "^15.5.28",
     "typescript": "5.6.3"
+  },
+  "overrides": {
+    "postcss": "^8.5.23"
   }
 }
