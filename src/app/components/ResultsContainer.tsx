@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Box, Heading, Text, Link, Spinner, Flex, Button } from "@chakra-ui/react";
+import { Box, Heading, Text, Link, Flex, Button } from "@chakra-ui/react";
 import { WarningIcon, CheckCircleIcon } from "@chakra-ui/icons";
 
 type ResultItem = {
@@ -41,16 +41,40 @@ const ResultsContainer = ({ results, isLoading, errorMessage }: ResultsContainer
     return (
       <Flex
         mt={10}
-        py={10}
+        py={8}
         align="center"
         justify="center"
         direction="column"
         gap={4}
         role="status"
+        aria-live="polite"
       >
-        <Spinner size="xl" color="#302A54" thickness="3px" />
-        <Text color="#514C61" fontSize="18px">
-          Checking your website&apos;s accessibility...
+        <Box
+          width="64px"
+          height="64px"
+          border="5px solid #E5DDF4"
+          borderTopColor="#7564B5"
+          borderRightColor="#E7A5BB"
+          borderRadius="full"
+          animation="spin 1s linear infinite"
+          sx={{
+            "@keyframes spin": {
+              from: { transform: "rotate(0deg)" },
+              to: { transform: "rotate(360deg)" },
+            },
+            "@media (prefers-reduced-motion: reduce)": {
+              animation: "none",
+            },
+          }}
+          aria-hidden="true"
+        />
+
+        <Text color="#302A54" fontSize="18px" fontWeight="medium" textAlign="center">
+          Analyzing your website...
+        </Text>
+
+        <Text color="#777186" fontSize="14px" textAlign="center">
+          This may take a few seconds
         </Text>
       </Flex>
     );

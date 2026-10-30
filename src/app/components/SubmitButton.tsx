@@ -1,4 +1,4 @@
-import { Button, Spinner } from "@chakra-ui/react";
+import { Button } from "@chakra-ui/react";
 
 type SubmitButtonProps = {
   onClick: () => void;
@@ -18,6 +18,7 @@ const SubmitButton = ({ onClick, isLoading }: SubmitButtonProps) => {
       borderRadius="8px"
       onClick={onClick}
       isDisabled={isLoading}
+      aria-busy={isLoading}
       _hover={{
         bg: "#453B72",
       }}
@@ -29,14 +30,7 @@ const SubmitButton = ({ onClick, isLoading }: SubmitButtonProps) => {
         outlineOffset: "3px",
       }}
     >
-      {isLoading ? (
-        <>
-          <Spinner size="sm" mr={2} />
-          Checking accessibility...
-        </>
-      ) : (
-        "Check accessibility"
-      )}
+      {isLoading ? "Checking accessibility..." : "Check accessibility"}
     </Button>
   );
 };
